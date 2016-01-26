@@ -1,0 +1,25 @@
+{
+  "name": "assignment1",
+  "authors": [
+    "JagpreeJattana <jagpreet@hotmail.com>"
+  ],
+  "description": "COMP392 - Advanced Graphics Assignment 1",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "https://github.com/CentennialCollege/ThreeJSBoilerPlate",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "Scripts/lib"
+  ],
+  "dependencies": {
+    "three.js": "~0.72.0",
+    "dat-gui": "~0.5.1",
+    "stats.js": "*",
+    "threex.colliders": "*"
+  }
+}
