@@ -32,6 +32,9 @@ var cube3;
 var cube4;
 var cube5;
 var cube6;
+var cube7;
+var cube8;
+var cube9;
 function init() {
     // Instantiate a new Scene object
     scene = new Scene();
@@ -74,6 +77,34 @@ function init() {
     cube4.position.y = 11;
     cube4.position.z = 0;
     scene.add(cube4);
+    cubeGeometry = new CubeGeometry(2, 2, 2);
+    cube5 = new Mesh(cubeGeometry, cubeMaterial);
+    cube5.castShadow = true;
+    cube5.position.x = 1;
+    cube5.position.y = 17;
+    cube5.position.z = 0;
+    scene.add(cube5);
+    cubeGeometry = new CubeGeometry(4, 4, 4);
+    cube6 = new Mesh(cubeGeometry, cubeMaterial);
+    cube6.castShadow = true;
+    cube6.position.x = 1;
+    cube6.position.y = 19;
+    cube6.position.z = 0;
+    scene.add(cube6);
+    cubeGeometry = new CubeGeometry(2, 2, 6);
+    cube7 = new Mesh(cubeGeometry, cubeMaterial);
+    cube7.castShadow = true;
+    cube7.position.x = 1;
+    cube7.position.y = 14;
+    cube7.position.z = 8;
+    scene.add(cube7);
+    cubeGeometry = new CubeGeometry(2, 2, 6);
+    cube8 = new Mesh(cubeGeometry, cubeMaterial);
+    cube8.castShadow = true;
+    cube8.position.x = 1;
+    cube8.position.y = 14;
+    cube8.position.z = -8;
+    scene.add(cube8);
     //Add a Plane to the Scene
     planeGeometry = new PlaneGeometry(20, 20);
     planeMaterial = new LambertMaterial({ color: 0xCCCCCC, opacity: 0.5 });
