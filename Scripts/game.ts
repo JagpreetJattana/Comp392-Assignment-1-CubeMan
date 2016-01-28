@@ -30,6 +30,10 @@ var control: Control;
 var gui: GUI;
 var stats:Stats;
 
+
+var cube1: Mesh;
+
+
 function init() {
     // Instantiate a new Scene object
 	scene = new Scene();
@@ -39,11 +43,23 @@ function init() {
 	setupCamera(); // setup the camera
 	
     //Add a Cube to the Scene
-	cubeGeometry = new CubeGeometry(6, 1, 6);
+	cubeGeometry = new CubeGeometry(2, 2, 2);
 	cubeMaterial = new LambertMaterial({color:0x00ff00, opacity:0.5});
 	cube = new Mesh(cubeGeometry, cubeMaterial);
 	cube.castShadow = true;
+    cube.position.x=1;
+    cube.position.y=1;
+    cube.position.z=4;
 	scene.add(cube);
+    
+    cubeGeometry = new CubeGeometry(2, 2, 2);
+	cubeMaterial = new LambertMaterial({color:0x00ff00, opacity:0.5});
+	cube1 = new Mesh(cubeGeometry, cubeMaterial);
+	cube1.castShadow = true;
+    cube1.position.x=1;
+    cube1.position.y=1;
+    cube1.position.z=-2;
+	scene.add(cube1);
 	console.log("Added Cube Primative to scene...");
 	
     //Add a Plane to the Scene
@@ -101,7 +117,7 @@ function gameLoop():void {
 	cube.material.transparent = true;
 	cube.material.opacity = control.opacity;
 	cube.material.color = new Color(control.color);
-	cube.rotation.y += control.rotationSpeed;
+	//cube.rotation.y += control.rotationSpeed;
 	
 	renderer.render(scene, camera);
 }
