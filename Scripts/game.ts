@@ -32,6 +32,11 @@ var stats:Stats;
 
 
 var cube1: Mesh;
+var cube2: Mesh;
+var cube3: Mesh;
+var cube4: Mesh;
+var cube5: Mesh;
+var cube6: Mesh;
 
 
 function init() {
@@ -43,24 +48,47 @@ function init() {
 	setupCamera(); // setup the camera
 	
     //Add a Cube to the Scene
-	cubeGeometry = new CubeGeometry(2, 2, 2);
+	cubeGeometry = new CubeGeometry(1, 1, 2);
 	cubeMaterial = new LambertMaterial({color:0x00ff00, opacity:0.5});
 	cube = new Mesh(cubeGeometry, cubeMaterial);
 	cube.castShadow = true;
-    cube.position.x=1;
-    cube.position.y=1;
-    cube.position.z=4;
+    cube.position.x=2;
+    cube.position.y=0.5;
+    cube.position.z=3;
 	scene.add(cube);
     
-    cubeGeometry = new CubeGeometry(2, 2, 2);
-	cubeMaterial = new LambertMaterial({color:0x00ff00, opacity:0.5});
+    cubeGeometry = new CubeGeometry(1, 1, 2);
 	cube1 = new Mesh(cubeGeometry, cubeMaterial);
 	cube1.castShadow = true;
-    cube1.position.x=1;
-    cube1.position.y=1;
-    cube1.position.z=-2;
+    cube1.position.x=2;
+    cube1.position.y=0.5;
+    cube1.position.z=-3;
 	scene.add(cube1);
-	console.log("Added Cube Primative to scene...");
+    
+   	cubeGeometry = new CubeGeometry(2, 6, 2);
+	cube2 = new Mesh(cubeGeometry, cubeMaterial);
+	cube2.castShadow = true;
+    cube2.position.x=1;
+    cube2.position.y=3;
+    cube2.position.z=-3;
+	scene.add(cube2);
+    
+    cubeGeometry = new CubeGeometry(2, 6, 2);
+	cube3 = new Mesh(cubeGeometry, cubeMaterial);
+	cube3.castShadow = true;
+    cube3.position.x=1;
+    cube3.position.y=3;
+    cube3.position.z=3;
+	scene.add(cube3);
+    
+    cubeGeometry = new CubeGeometry(4, 10, 10);
+	cube4 = new Mesh(cubeGeometry, cubeMaterial);
+	cube4.castShadow = true;
+    cube4.position.x=1;
+    cube4.position.y=11;
+    cube4.position.z=0;
+	scene.add(cube4);
+	
 	
     //Add a Plane to the Scene
 	planeGeometry = new PlaneGeometry(20, 20);
@@ -134,9 +162,9 @@ function setupRenderer():void {
 // Setup main camera for the scene
 function setupCamera():void {
 	camera = new PerspectiveCamera(45, window.innerWidth/window.innerHeight, 0.1, 1000);
-	camera.position.x =15;
-	camera.position.y = 16;
-	camera.position.z = 25;
+	camera.position.x =35;
+	camera.position.y = 32;
+	camera.position.z = -30;
 	camera.lookAt(scene.position);
 	console.log("Finished setting up Camera...");
 }
