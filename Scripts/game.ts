@@ -14,6 +14,7 @@ import Control = objects.Control;
 import GUI = dat.GUI;
 import Color = THREE.Color;
 import Vector3 = THREE.Vector3;
+import object3d=THREE.Object3D;
 
 var scene: Scene;
 var renderer: Renderer;
@@ -29,6 +30,7 @@ var pointLight: PointLight;
 var control: Control;
 var gui: GUI;
 var stats:Stats;
+var humanoid=new object3d;
 
 
 var cube1: Mesh;
@@ -58,7 +60,8 @@ function init() {
     cube.position.x=2;
     cube.position.y=0.5;
     cube.position.z=3;
-	scene.add(cube);
+	//scene.add(cube);
+    humanoid.add(cube);
     
     cubeGeometry = new CubeGeometry(1, 1, 2);
 	cube1 = new Mesh(cubeGeometry, cubeMaterial);
@@ -66,7 +69,7 @@ function init() {
     cube1.position.x=2;
     cube1.position.y=0.5;
     cube1.position.z=-3;
-	scene.add(cube1);
+	humanoid.add(cube1);
     
    	cubeGeometry = new CubeGeometry(2, 6, 2);
 	cube2 = new Mesh(cubeGeometry, cubeMaterial);
@@ -74,7 +77,7 @@ function init() {
     cube2.position.x=1;
     cube2.position.y=3;
     cube2.position.z=-3;
-	scene.add(cube2);
+	humanoid.add(cube2);
     
     cubeGeometry = new CubeGeometry(2, 6, 2);
 	cube3 = new Mesh(cubeGeometry, cubeMaterial);
@@ -82,7 +85,7 @@ function init() {
     cube3.position.x=1;
     cube3.position.y=3;
     cube3.position.z=3;
-	scene.add(cube3);
+	humanoid.add(cube3);
     
     cubeGeometry = new CubeGeometry(4, 10, 10);
 	cube4 = new Mesh(cubeGeometry, cubeMaterial);
@@ -90,7 +93,7 @@ function init() {
     cube4.position.x=1;
     cube4.position.y=11;
     cube4.position.z=0;
-	scene.add(cube4);
+	humanoid.add(cube4);
     
     cubeGeometry = new CubeGeometry(2, 2, 2);
 	cube5 = new Mesh(cubeGeometry, cubeMaterial);
@@ -98,7 +101,7 @@ function init() {
     cube5.position.x=1;
     cube5.position.y=17;
     cube5.position.z=0;
-	scene.add(cube5);
+	humanoid.add(cube5);
     
     cubeGeometry = new CubeGeometry(4, 4, 4);
 	cube6 = new Mesh(cubeGeometry, cubeMaterial);
@@ -106,7 +109,7 @@ function init() {
     cube6.position.x=1;
     cube6.position.y=19;
     cube6.position.z=0;
-	scene.add(cube6);
+	humanoid.add(cube6);
     
     cubeGeometry = new CubeGeometry(2, 2, 6);
 	cube7 = new Mesh(cubeGeometry, cubeMaterial);
@@ -114,7 +117,7 @@ function init() {
     cube7.position.x=1;
     cube7.position.y=14;
     cube7.position.z=8;
-	scene.add(cube7);
+	humanoid.add(cube7);
     
     cubeGeometry = new CubeGeometry(2, 2, 6);
 	cube8 = new Mesh(cubeGeometry, cubeMaterial);
@@ -122,9 +125,9 @@ function init() {
     cube8.position.x=1;
     cube8.position.y=14;
     cube8.position.z=-8;
-	scene.add(cube8);
+	humanoid.add(cube8);
 	
-	
+	scene.add(humanoid);
     //Add a Plane to the Scene
 	planeGeometry = new PlaneGeometry(20, 20);
 	planeMaterial = new LambertMaterial({color:0xCCCCCC, opacity: 0.5});
@@ -180,7 +183,7 @@ function gameLoop():void {
 	cube.material.transparent = true;
 	cube.material.opacity = control.opacity;
 	cube.material.color = new Color(control.color);
-	//cube.rotation.y += control.rotationSpeed;
+	humanoid.rotation.y += control.rotationSpeed;
 	
 	renderer.render(scene, camera);
 }
