@@ -28,6 +28,7 @@ var plane: Mesh;
 var spotLight: SpotLight;
 var pointLight: PointLight;
 var control: Control;
+
 var gui: GUI;
 var stats:Stats;
 var humanoid=new object3d;
@@ -42,6 +43,9 @@ var cube6: Mesh;
 var cube7: Mesh;
 var cube8: Mesh;
 var cube9: Mesh;
+var cube10: Mesh;
+var cube11: Mesh;
+
 
 
 function init() {
@@ -52,22 +56,35 @@ function init() {
 	
 	setupCamera(); // setup the camera
 	
-    //Add a Cube to the Scene
+    //Add a Cube to make the foot of humanoid
 	cubeGeometry = new CubeGeometry(1, 1, 2);
 	cubeMaterial = new LambertMaterial({color:0x00ff00, opacity:0.5});
 	cube = new Mesh(cubeGeometry, cubeMaterial);
 	cube.castShadow = true;
     cube.position.x=2;
-    cube.position.y=0.5;
+   // cube.position.y=0.5;
+   cube.position.y=-10;
     cube.position.z=3;
 	//scene.add(cube);
     humanoid.add(cube);
+    
+    
+  /*  cubeGeometry = new CubeGeometry(1, 1, 2);
+	cubeMaterial = new LambertMaterial({color:0x00ff00, opacity:0.5});
+	cube = new Mesh(cubeGeometry, cubeMaterial);
+	cube.castShadow = true;
+    cube.position.x=4;
+    cube.position.y=0.5;
+    cube.position.z=3;
+	//scene.add(cube);
+    humanoid.add(cube);*/
     
     cubeGeometry = new CubeGeometry(1, 1, 2);
 	cube1 = new Mesh(cubeGeometry, cubeMaterial);
 	cube1.castShadow = true;
     cube1.position.x=2;
-    cube1.position.y=0.5;
+    //cube1.position.y=0.5;
+    cube1.position.y=-10;
     cube1.position.z=-3;
 	humanoid.add(cube1);
     
@@ -75,7 +92,8 @@ function init() {
 	cube2 = new Mesh(cubeGeometry, cubeMaterial);
 	cube2.castShadow = true;
     cube2.position.x=1;
-    cube2.position.y=3;
+    //cube2.position.y=3;
+    cube2.position.y=-7.5;
     cube2.position.z=-3;
 	humanoid.add(cube2);
     
@@ -83,7 +101,8 @@ function init() {
 	cube3 = new Mesh(cubeGeometry, cubeMaterial);
 	cube3.castShadow = true;
     cube3.position.x=1;
-    cube3.position.y=3;
+    //cube3.position.y=3;
+    cube3.position.y=-7.5;
     cube3.position.z=3;
 	humanoid.add(cube3);
     
@@ -91,7 +110,8 @@ function init() {
 	cube4 = new Mesh(cubeGeometry, cubeMaterial);
 	cube4.castShadow = true;
     cube4.position.x=1;
-    cube4.position.y=11;
+    //cube4.position.y=11;
+    cube4.position.y=0.5;
     cube4.position.z=0;
 	humanoid.add(cube4);
     
@@ -99,7 +119,8 @@ function init() {
 	cube5 = new Mesh(cubeGeometry, cubeMaterial);
 	cube5.castShadow = true;
     cube5.position.x=1;
-    cube5.position.y=17;
+    //cube5.position.y=17;
+    cube5.position.y=6.5;
     cube5.position.z=0;
 	humanoid.add(cube5);
     
@@ -107,7 +128,8 @@ function init() {
 	cube6 = new Mesh(cubeGeometry, cubeMaterial);
 	cube6.castShadow = true;
     cube6.position.x=1;
-    cube6.position.y=19;
+    //cube6.position.y=19;
+    cube6.position.y=8.5;
     cube6.position.z=0;
 	humanoid.add(cube6);
     
@@ -115,7 +137,8 @@ function init() {
 	cube7 = new Mesh(cubeGeometry, cubeMaterial);
 	cube7.castShadow = true;
     cube7.position.x=1;
-    cube7.position.y=14;
+    //cube7.position.y=14;
+    cube7.position.y=3.5;
     cube7.position.z=8;
 	humanoid.add(cube7);
     
@@ -123,34 +146,71 @@ function init() {
 	cube8 = new Mesh(cubeGeometry, cubeMaterial);
 	cube8.castShadow = true;
     cube8.position.x=1;
-    cube8.position.y=14;
+    //cube8.position.y=14;
+    cube8.position.y=3.5;
     cube8.position.z=-8;
 	humanoid.add(cube8);
+    
+    cubeGeometry = new CubeGeometry(2, .5, 1);
+	cube9 = new Mesh(cubeGeometry, cubeMaterial);
+	cube9.castShadow = true;
+    cube9.position.x=2.2;
+    //cube9.position.y=20;
+    cube9.position.y=9.5;
+    cube9.position.z=1;
+	humanoid.add(cube9);
+    
+    cubeGeometry = new CubeGeometry(2, .5, 1);
+	cube10 = new Mesh(cubeGeometry, cubeMaterial);
+	cube10.castShadow = true;
+    cube10.position.x=2.2;
+    //cube10.position.y=20;
+    cube10.position.y=9.5;
+    cube10.position.z=-1;
+	humanoid.add(cube10);
+    
+    cubeGeometry = new CubeGeometry(2, .5, 1.5);
+	cube11 = new Mesh(cubeGeometry, cubeMaterial);
+	cube11.castShadow = true;
+    cube11.position.x=2;
+    //cube11.position.y=18;
+    cube11.position.y=7.5;
+    cube11.position.z=0;
+	humanoid.add(cube11);
+    
+   
 	
 	scene.add(humanoid);
     //Add a Plane to the Scene
-	planeGeometry = new PlaneGeometry(20, 20);
+	planeGeometry = new PlaneGeometry(60, 60);
 	planeMaterial = new LambertMaterial({color:0xCCCCCC, opacity: 0.5});
 	plane = new Mesh(planeGeometry, planeMaterial);
 	plane.receiveShadow = true;
 	
 	plane.rotation.x = -0.5 * Math.PI;
-	plane.position.y = -2;
+	//plane.position.y = -2;
+    plane.position.y = -12.5;
 	
 	scene.add(plane);
 	console.log("Added Plane Primative to scene...");
 	
 	// Add a SpotLight to the scene
 	spotLight = new SpotLight(0xffffff);
-	spotLight.position.set (10, 20, 20);
+//	spotLight.position.set (10, 20, 20);
+    spotLight.position.set (35, 35, -30);
+    spotLight.rotation.set(-0.8, 42.7, 19.5);
+    //spotLight.lookAt(plane.position);
 	spotLight.castShadow = true;
 	scene.add(spotLight);
 	console.log("Added Spot Light to Scene");
 	
 	// add extras
 	gui = new GUI();
-	control = new Control(0.005,  cubeMaterial.opacity, cubeMaterial.color.getHex());
+	//control = new Control(0.005, 0.005,0.005, cubeMaterial.opacity, cubeMaterial.color.getHex());
+    	control = new Control(0.005,0.005,0.005, cubeMaterial.opacity, cubeMaterial.color.getHex());
+ 
 	addControl(control);
+
 	
 	addStatsObject();
 	
@@ -159,7 +219,9 @@ function init() {
 }
 
 function addControl(controlObject: Control):void {
-	gui.add(controlObject, 'rotationSpeed',-0.01,0.01);
+	gui.add(controlObject, 'XrotationSpeed',-0.01,0.01);
+    gui.add(controlObject, 'YrotationSpeed',-0.01,0.01);
+    gui.add(controlObject, 'ZrotationSpeed',-0.01,0.01);
 	gui.add(controlObject, 'opacity', 0.1, 1);
 	gui.addColor(controlObject, 'color');
 }
@@ -183,7 +245,12 @@ function gameLoop():void {
 	cube.material.transparent = true;
 	cube.material.opacity = control.opacity;
 	cube.material.color = new Color(control.color);
-	humanoid.rotation.y += control.rotationSpeed;
+	humanoid.rotation.y += control.YrotationSpeed;
+    humanoid.rotation.x+=control.XrotationSpeed;
+    humanoid.rotation.z+=control.ZrotationSpeed;
+ 
+    
+   // humanoid.rotation.z+=control.rotationSpeedz;
 	
 	renderer.render(scene, camera);
 }
@@ -200,9 +267,9 @@ function setupRenderer():void {
 // Setup main camera for the scene
 function setupCamera():void {
 	camera = new PerspectiveCamera(45, window.innerWidth/window.innerHeight, 0.1, 1000);
-	camera.position.x =35;
-	camera.position.y = 32;
-	camera.position.z = -30;
+	camera.position.x =70;
+	camera.position.y = 31;
+	camera.position.z = -70;
 	camera.lookAt(scene.position);
 	console.log("Finished setting up Camera...");
 }

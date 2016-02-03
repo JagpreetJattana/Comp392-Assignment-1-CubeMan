@@ -1,10 +1,15 @@
 module objects {
 	export class Control {
-		rotationSpeed: number;
+		XrotationSpeed: number;
+        YrotationSpeed:number;
+        ZrotationSpeed:number;
 		opacity: number;
 		color: number; // hexadecimal value of the color
-		constructor(rotationSpeed: number, opacity: number, color:number) {
-			this.rotationSpeed = rotationSpeed;
+		//constructor(rotationSpeedx: number,rotationSpeedy: number,rotationSpeedz: number, opacity: number, color:number) {
+            constructor(rotationSpeedx: number,rotationSpeedy: number,rotationSpeedz: number, opacity: number, color:number) {
+			this.XrotationSpeed = rotationSpeedx;
+            this.YrotationSpeed=rotationSpeedy;
+            this.ZrotationSpeed=rotationSpeedz;
 			this.opacity = opacity;
 			this.color = color;
 		}
