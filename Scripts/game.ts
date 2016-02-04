@@ -183,7 +183,7 @@ function init() {
 	scene.add(humanoid);
     //Add a Plane to the Scene
 	planeGeometry = new PlaneGeometry(60, 60);
-	planeMaterial = new LambertMaterial({color:0xCCCCCC, opacity: 0.5});
+	planeMaterial = new LambertMaterial({color:0x0033CC, opacity: 0.5});
 	plane = new Mesh(planeGeometry, planeMaterial);
 	plane.receiveShadow = true;
 	
@@ -196,9 +196,10 @@ function init() {
 	
 	// Add a SpotLight to the scene
 	spotLight = new SpotLight(0xffffff);
-//	spotLight.position.set (10, 20, 20);
-    spotLight.position.set (35, 35, -30);
-    spotLight.rotation.set(-0.8, 42.7, 19.5);
+	spotLight.position.set (21, 70, 19);
+    //spotLight.position.set (35, 35, -30);
+    //spotLight.rotation.set(-0.8, 42.7, 19.5);
+    spotLight.lookAt(new Vector3(0, 0, 0));
     //spotLight.lookAt(plane.position);
 	spotLight.castShadow = true;
 	scene.add(spotLight);

@@ -55,15 +55,15 @@ function init() {
     cube.position.z = 3;
     //scene.add(cube);
     humanoid.add(cube);
-    cubeGeometry = new CubeGeometry(1, 1, 2);
-    cubeMaterial = new LambertMaterial({ color: 0x00ff00, opacity: 0.5 });
-    cube = new Mesh(cubeGeometry, cubeMaterial);
-    cube.castShadow = true;
-    cube.position.x = 4;
-    cube.position.y = 0.5;
-    cube.position.z = 3;
-    //scene.add(cube);
-    humanoid.add(cube);
+    /*  cubeGeometry = new CubeGeometry(1, 1, 2);
+      cubeMaterial = new LambertMaterial({color:0x00ff00, opacity:0.5});
+      cube = new Mesh(cubeGeometry, cubeMaterial);
+      cube.castShadow = true;
+      cube.position.x=4;
+      cube.position.y=0.5;
+      cube.position.z=3;
+      //scene.add(cube);
+      humanoid.add(cube);*/
     cubeGeometry = new CubeGeometry(1, 1, 2);
     cube1 = new Mesh(cubeGeometry, cubeMaterial);
     cube1.castShadow = true;
@@ -155,7 +155,7 @@ function init() {
     scene.add(humanoid);
     //Add a Plane to the Scene
     planeGeometry = new PlaneGeometry(60, 60);
-    planeMaterial = new LambertMaterial({ color: 0xCCCCCC, opacity: 0.5 });
+    planeMaterial = new LambertMaterial({ color: 0x0033CC, opacity: 0.5 });
     plane = new Mesh(planeGeometry, planeMaterial);
     plane.receiveShadow = true;
     plane.rotation.x = -0.5 * Math.PI;
@@ -165,9 +165,10 @@ function init() {
     console.log("Added Plane Primative to scene...");
     // Add a SpotLight to the scene
     spotLight = new SpotLight(0xffffff);
-    //	spotLight.position.set (10, 20, 20);
-    spotLight.position.set(35, 35, -30);
-    spotLight.rotation.set(-0.8, 42.7, 19.5);
+    spotLight.position.set(21, 70, 19);
+    //spotLight.position.set (35, 35, -30);
+    //spotLight.rotation.set(-0.8, 42.7, 19.5);
+    spotLight.lookAt(new Vector3(0, 0, 0));
     //spotLight.lookAt(plane.position);
     spotLight.castShadow = true;
     scene.add(spotLight);
