@@ -243,6 +243,7 @@ function gameLoop():void {
 	humanoid.rotation.y += control.YrotationSpeed;
     humanoid.rotation.x+=control.XrotationSpeed;
     humanoid.rotation.z+=control.ZrotationSpeed;
+    //this what helps to zoom in and out
     camera.position.z=control.Zoom;
     camera.position.x=control.Zoom;
     camera.lookAt(scene.position);
