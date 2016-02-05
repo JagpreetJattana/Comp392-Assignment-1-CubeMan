@@ -10,6 +10,8 @@ import LambertMaterial = THREE.MeshLambertMaterial;
 import Mesh = THREE.Mesh;
 import SpotLight = THREE.SpotLight;
 import PointLight = THREE.PointLight;
+import AmbientLight = THREE.AmbientLight;
+import AxisHelper = THREE.AxisHelper;
 import Control = objects.Control;
 import GUI = dat.GUI;
 import Color = THREE.Color;
@@ -45,6 +47,8 @@ var cube8: Mesh;
 var cube9: Mesh;
 var cube10: Mesh;
 var cube11: Mesh;
+var axes: AxisHelper;
+var ambientLight: AmbientLight;
 
 
 
@@ -183,6 +187,14 @@ function init() {
 	scene.add(plane);
 	console.log("Added Plane Primative to scene...");
 	
+     // add an axis helper to the scene
+    axes = new AxisHelper(20);
+    scene.add(axes);
+    
+      // Add an AmbientLight to the scene
+    ambientLight = new AmbientLight(0x444444);
+    scene.add(ambientLight);
+    
 	// Add a SpotLight to the scene
 	spotLight = new SpotLight(0xffffff);
 	spotLight.position.set (21, 70, 19);
@@ -193,7 +205,7 @@ function init() {
 	
 	// add extras
 	gui = new GUI();
-	control = new Control(0.005,0.005,0.005, cubeMaterial.opacity, cubeMaterial.color.getHex());
+	control = new Control(-70,0.005,0.005,0.005, cubeMaterial.opacity, cubeMaterial.color.getHex());
  	addControl(control);
 	addStatsObject();
 	document.body.appendChild(renderer.domElement);
@@ -204,6 +216,7 @@ function addControl(controlObject: Control):void {
 	gui.add(controlObject, 'XrotationSpeed',-0.01,0.01);
     gui.add(controlObject, 'YrotationSpeed',-0.01,0.01);
     gui.add(controlObject, 'ZrotationSpeed',-0.01,0.01);
+    gui.add(controlObject, 'Zoom',-200,200);
 	gui.add(controlObject, 'opacity', 0.1, 1);
 	gui.addColor(controlObject, 'color');
 }
@@ -230,6 +243,9 @@ function gameLoop():void {
 	humanoid.rotation.y += control.YrotationSpeed;
     humanoid.rotation.x+=control.XrotationSpeed;
     humanoid.rotation.z+=control.ZrotationSpeed;
+    camera.position.z=control.Zoom;
+    camera.position.x=control.Zoom;
+    camera.lookAt(scene.position);
 
 	renderer.render(scene, camera);
 }

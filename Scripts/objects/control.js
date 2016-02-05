@@ -2,12 +2,13 @@ var objects;
 (function (objects) {
     var Control = (function () {
         //constructor(rotationSpeedx: number,rotationSpeedy: number,rotationSpeedz: number, opacity: number, color:number) {
-        function Control(rotationSpeedx, rotationSpeedy, rotationSpeedz, opacity, color) {
+        function Control(zoom, rotationSpeedx, rotationSpeedy, rotationSpeedz, opacity, color) {
             this.XrotationSpeed = rotationSpeedx;
             this.YrotationSpeed = rotationSpeedy;
             this.ZrotationSpeed = rotationSpeedz;
             this.opacity = opacity;
             this.color = color;
+            this.Zoom = zoom;
         }
         return Control;
     })();
